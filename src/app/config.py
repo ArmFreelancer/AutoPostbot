@@ -5,7 +5,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
     # --- App ---
     env: str = Field(alias="ENV", default="dev")
@@ -14,7 +18,14 @@ class Settings(BaseSettings):
 
     # --- Gemini ---
     gemini_api_key: SecretStr = Field(alias="GEMINI_API_KEY")
-    gemini_model: str = Field(alias="GEMINI_MODEL", default="gemini-3-pro-preview")
+    gemini_model: str = Field(alias="GEMINI_MODEL", default="gemini-2.0-flash")
+
+    # --- Ollama (локально, без ключа) ---
+    ollama_url: str = Field(alias="OLLAMA_URL", default="http://localhost:11434")
+    ollama_model: str = Field(alias="OLLAMA_MODEL", default="llama3.1:8b")
+
+    # Какой провайдер использовать для генерации: ollama | gemini
+    ai_provider: str = Field(alias="AI_PROVIDER", default="ollama")
 
     # --- Telegram ---
     bot_token: SecretStr = Field(alias="BOT_TOKEN")

@@ -5,3 +5,6 @@ class DomainError(Exception):
 
 class GeminiProviderError(DomainError):
     """Gemini provider error."""
+
+class OllamaProviderError(DomainError):
+    """Ollama provider error."""
