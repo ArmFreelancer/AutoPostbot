@@ -12,10 +12,11 @@ class Settings(BaseSettings):
     gemini_model: str = Field(alias="GEMINI_MODEL", default="gemini-3-pro-preview")
 
     # --- Telegram ---
-    telegram_bot_token: SecretStr = Field(alias="TELEGRAM_BOT_TOKEN")
+    bot_token: SecretStr = Field(alias="BOT_TOKEN")
 
     # --- Database ---
     sqlite_path: str = Field(alias="SQLITE_PATH", default="db/autopostbot.sqlite3")
+    database_url: str = Field(alias="DATABASE_URL")
 
     # --- Logging ---
     log_level: str = Field(alias="LOG_LEVEL", default="INFO")
