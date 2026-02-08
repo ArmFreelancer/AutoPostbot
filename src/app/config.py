@@ -15,7 +15,6 @@ class Settings(BaseSettings):
     bot_token: SecretStr = Field(alias="BOT_TOKEN")
 
     # --- Database ---
-    sqlite_path: str = Field(alias="SQLITE_PATH", default="db/autopostbot.sqlite3")
     database_url: str = Field(alias="DATABASE_URL")
 
     # --- Logging ---
