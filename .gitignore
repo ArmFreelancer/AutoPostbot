@@ -63,3 +63,4 @@ Thumbs.db
 *.sqlite3
 *.log
 logs/
+autopostbot_context.txt
